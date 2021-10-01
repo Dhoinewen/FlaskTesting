@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Create
+{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <h1>Article Create</h1>
+    <form method="POST">
+        <input type="text" name="title" id="title" class="form-control" placeholder="Input Title"><br>
+        <textarea name="intro" id="intro" class="form-control" placeholder="Input Intro"></textarea><br>
+        <textarea name="text" id="text" class="form-control" placeholder="Input Text"></textarea><br>
+        <input type="submit" class="btn-success" value="Enter">
+    </form>
+</div>
+{% endblock %}
