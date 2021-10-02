@@ -42,7 +42,7 @@ def create_article():
         #print(text)
 
         article = Article(title=title, intro=intro, text=text)
-        #print(article.text)
+        print(article.text)
         try:
             db.session.add(article)
             db.session.commit()
