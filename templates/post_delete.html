@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Delete Post
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Post Delete</h1>
+
+    <div class="alert alert-info">
+        <p>You are shure about delete post ID: {{ article.id }} - Name: {{ article.title }}</p>
+        <a href="/history" class="btn btn-danger">Yes</a>
+        <a href="/history/{{ article.id }}" class="btn btn-warning">No</a>
+    </div>
+</div>
+{% endblock %}

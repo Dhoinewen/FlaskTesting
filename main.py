@@ -43,6 +43,12 @@ def post_detail(id):
     return render_template('post_detail.html', article=article)
 
 
+@main.route('/history/<int:id>/delete')
+def post_delete(id):
+    article = Article.query.get(id)
+    return render_template('post_delete.html', article=article)
+
+
 @main.route('/create-article', methods=['POST', 'GET'])
 def create_article():
     if request.method == "POST":
