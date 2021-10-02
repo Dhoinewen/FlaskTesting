@@ -45,8 +45,15 @@ def post_detail(id):
 
 @main.route('/history/<int:id>/delete')
 def post_delete(id):
-    article = Article.query.get(id)
+    article = Article.query.get_or_404(id)
+
     return render_template('post_delete.html', article=article)
+
+
+@main.route('/history/<int:id>/upgrade')
+def post_change(id):
+    article = Article.query.get(id)
+    return render_template('post_upgrade.html', article=article)
 
 
 @main.route('/create-article', methods=['POST', 'GET'])

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Change Post
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Post Delete</h1>
+
+    <div class="alert alert-info">
+        <p>Upgrade post ID: {{ article.id }} - Name: {{ article.title }}</p>
+        <a href="/history" class="btn btn-danger">Submit</a>
+        <a href="/history/{{ article.id }}" class="btn btn-warning">Back</a>
+    </div>
+</div>
+{% endblock %}
