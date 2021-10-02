@@ -31,6 +31,18 @@ def about():
     return render_template('about.html')
 
 
+@main.route('/history')
+def history():
+    articles = Article.query.order_by(Article.date.desc()).all()
+    return render_template('history.html', articles=articles)
+
+
+@main.route('/history/<int:id>')
+def post_detail(id):
+    article = Article.query.get(id)
+    return render_template('post_detail.html', article=article)
+
+
 @main.route('/create-article', methods=['POST', 'GET'])
 def create_article():
     if request.method == "POST":
@@ -46,7 +58,7 @@ def create_article():
         try:
             db.session.add(article)
             db.session.commit()
-            return redirect('/')
+            return redirect('/history')
         except:
             return "Error"
     else:
