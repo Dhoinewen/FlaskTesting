@@ -46,14 +46,25 @@ def post_detail(id):
 @main.route('/history/<int:id>/delete')
 def post_delete(id):
     article = Article.query.get_or_404(id)
-
     return render_template('post_delete.html', article=article)
 
 
-@main.route('/history/<int:id>/upgrade')
+@main.route('/history/<int:id>/delete/yep')
+def post_delete_yep(id):
+    article = Article.query.get_or_404(id)
+
+    try:
+        db.session.delete(article)
+        db.session.commit()
+        return redirect('/history')
+    except:
+        return "Delete error"
+
+
+@main.route('/history/<int:id>/update')
 def post_change(id):
     article = Article.query.get(id)
-    return render_template('post_upgrade.html', article=article)
+    return render_template('post_update.html', article=article)
 
 
 @main.route('/create-article', methods=['POST', 'GET'])
