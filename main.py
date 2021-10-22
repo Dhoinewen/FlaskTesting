@@ -61,10 +61,22 @@ def post_delete_yep(id):
         return "Delete error"
 
 
-@main.route('/history/<int:id>/update')
-def post_change(id):
+@main.route('/history/<int:id>/update', methods=['POST', 'GET'])
+def post_update(id):
     article = Article.query.get(id)
-    return render_template('post_update.html', article=article)
+    if request.method == "POST":
+        article.title = request.form['title']
+        article.intro = request.form['intro']
+        article.text = request.form['text']
+        try:
+            db.session.add(article)
+            db.session.commit()
+            return redirect('/history')
+        except:
+            return "Error"
+    else:
+        article = Article.query.get(id)
+        return render_template('post_update.html', article=article)
 
 
 @main.route('/create-article', methods=['POST', 'GET'])
