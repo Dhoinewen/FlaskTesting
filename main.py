@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -52,7 +52,6 @@ def post_delete(id):
 @main.route('/history/<int:id>/delete/yep')
 def post_delete_yep(id):
     article = Article.query.get_or_404(id)
-
     try:
         db.session.delete(article)
         db.session.commit()
@@ -83,11 +82,8 @@ def post_update(id):
 def create_article():
     if request.method == "POST":
         title = request.form['title']
-        #print(title)
         intro = request.form['intro']
-        #print(intro)
         text = request.form['text']
-        #print(text)
 
         article = Article(title=title, intro=intro, text=text)
         print(article.text)
@@ -102,5 +98,4 @@ def create_article():
 
 
 if __name__ == '__main__':
-    main.run( debug = True )
-
+    main.run(debug=True)
